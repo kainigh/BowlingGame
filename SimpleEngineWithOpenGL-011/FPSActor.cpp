@@ -12,7 +12,9 @@
 #include "Collisions.h"
 #include "Maths.h"
 
+#include <iostream>
 
+using namespace std;
 
 FPSActor::FPSActor() :
 	Actor(),
@@ -32,7 +34,7 @@ FPSActor::FPSActor() :
 
 	FPSModel = new Actor();
 	
-	FPSModel->setScale(7.75f);
+	FPSModel->setScale(modelScale);
 	
 	meshComponent = new MeshComponent(FPSModel);
 	//meshComponent->setMesh(Assets::getMesh("Mesh_Rifle"));
@@ -66,14 +68,26 @@ void FPSActor::updateActor(float dt)
 	modelPosition += getRight() * MODEL_OFFSET.y;
 	modelPosition.z += MODEL_OFFSET.z;
 
+	if (power)
+	{
+		modelScale -= scaleSpeed;
+
+		if (modelScale >= 10)
+			scaleSpeed = -scaleSpeed;
+
+		if (modelScale <= 5)
+			scaleSpeed = -scaleSpeed;
+
+		FPSModel->setScale(modelScale);
+	}
 
 	move += moveSpeed;
 
-	//change the direction of the arrow
-	if (move >= 15)
+	//change the direction of the arrow from right to left
+	if (move >= 15 && launch == false)
 		moveSpeed = -moveSpeed;		
 
-	if (move <= -15)
+	if (move <= -15 && launch == false)
 		moveSpeed = -moveSpeed;
 	
 
@@ -148,8 +162,40 @@ void FPSActor::actorInput(const InputState& inputState)
 	// Shoot
 	if (inputState.mouse.getButtonState(1) == ButtonState::Pressed)
 	{
-		shoot();
+		launch = true;
+		moveSpeed = 0.0f;
+		power = true;
+		
 	}
+
+	if (inputState.mouse.getButtonState(3) == ButtonState::Pressed && power == true)
+	{
+		shoot();
+		launch = false;
+		moveSpeed = 0.1f;
+		power = false;
+		
+		FPSModel->setScale(7.75f);
+
+	}
+
+
+
+
+
+}
+
+void FPSActor::Power(const InputState& inputState)
+{
+	// Increase and decrease size of arrow
+
+	while(inputState.keyboard.getKeyValue(SDL_SCANCODE_P))
+		cout << "Right clicked" << endl;
+
+	/*while(inputState.mouse.getButtonState(3) == ButtonState::Pressed)
+	FPSModel->setScale(5.0f);*/
+
+
 
 
 }

@@ -29,7 +29,6 @@ void BallMoveComponent::update(float dt)
 	Vector3 dir = owner.getForward();
 	Vector3 end = start + dir * segmentLength;
 
-	
 
 	if (oceanHit == false)
 	{

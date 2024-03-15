@@ -17,6 +17,7 @@ public:
 	void setFootstepSurface(float value);
 	void setVisible(bool isVisible);
 	void fixCollisions();
+	void Power(const InputState& inputState);
 
 private:
 	class MoveComponent* moveComponent;
@@ -31,6 +32,11 @@ private:
 	float moveSpeed = 0.1f;
 	float move = 0.0f;
 	float forwardOffset = 0.0f;
+
+	bool power = false;
+	bool launch = false;
+	float modelScale = 7.75f;
+	float scaleSpeed = 0.05f;
 
 	Vector3 pos = Vector3(100.0f, 100.0f, -100.0f);
 	
