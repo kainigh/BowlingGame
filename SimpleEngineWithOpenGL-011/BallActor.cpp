@@ -36,6 +36,6 @@ void BallActor::setPlayer(Actor* player)
 void BallActor::hitTarget()
 {
 	setState(ActorState::Dead);
-	cout << "boom" << endl;
+	//cout << "boom" << endl;
 	//audio->playEvent("event:/Ding");
 }

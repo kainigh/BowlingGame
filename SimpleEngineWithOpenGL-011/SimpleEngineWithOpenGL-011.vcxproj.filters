@@ -104,6 +104,7 @@
     <ClCompile Include="BallActor.cpp" />
     <ClCompile Include="BallMoveComponent.cpp" />
     <ClCompile Include="TargetActor.cpp" />
+    <ClCompile Include="TargetMoveComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -212,6 +213,7 @@
     <ClInclude Include="BallActor.h" />
     <ClInclude Include="BallMoveComponent.h" />
     <ClInclude Include="TargetActor.h" />
+    <ClInclude Include="TargetMoveComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">

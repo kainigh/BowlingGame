@@ -6,5 +6,10 @@ class TargetActor : public Actor
 public:
 	TargetActor();
 
-	void Hit();
+	void Hit(Vector3 dir);
+
+private:
+	class TargetMoveComponent* targetMove;
+
+	
 };
