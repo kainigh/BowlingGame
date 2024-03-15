@@ -32,7 +32,7 @@ FPSActor::FPSActor() :
 
 	FPSModel = new Actor();
 	
-	FPSModel->setScale(10.75f);
+	FPSModel->setScale(7.75f);
 	
 	meshComponent = new MeshComponent(FPSModel);
 	//meshComponent->setMesh(Assets::getMesh("Mesh_Rifle"));
@@ -66,12 +66,12 @@ void FPSActor::updateActor(float dt)
 	modelPosition += getRight() * MODEL_OFFSET.y;
 	modelPosition.z += MODEL_OFFSET.z;
 
+
 	move += moveSpeed;
 
+	//change the direction of the arrow
 	if (move >= 15)
-		moveSpeed = -moveSpeed;
-	
-		
+		moveSpeed = -moveSpeed;		
 
 	if (move <= -15)
 		moveSpeed = -moveSpeed;
@@ -89,7 +89,7 @@ void FPSActor::updateActor(float dt)
 	q = Quaternion::concatenate(q, Quaternion(getRight(), cameraComponent->getPitch()));
 	FPSModel->setRotation(q);
 
-	//fixCollisions();
+	fixCollisions();
 
 }
 
@@ -170,7 +170,11 @@ void FPSActor::shoot()
 	BallActor* ball = new BallActor();
 	ball->setPlayer(this);
 	//ball->setPosition(start + dir * 20.0f);
-	ball->setPosition(FPSModel->getPosition() + dir * 50.0f);
+	Vector3 offset = FPSModel->getPosition();
+
+	offset.z = -90.0f;
+
+	ball->setPosition(offset + dir * 150.0f);
 	// Rotate the ball to face new direction
 	ball->rotateToNewForward(dir);
 	// Play shooting sound

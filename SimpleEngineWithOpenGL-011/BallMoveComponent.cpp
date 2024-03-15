@@ -34,7 +34,7 @@ void BallMoveComponent::update(float dt)
 	if (oceanHit == false)
 	{
 		
-		start.z -= 3.3f;
+		//start.z -= 0.3f;
 
 	}
 
@@ -50,7 +50,7 @@ void BallMoveComponent::update(float dt)
 	if (owner.getGame().getPhysicsSystem().segmentCast(l, info) && info.actor != player)
 	{
 		// If we collided, reflect the ball about the normal
-		dir = Vector3::reflect(dir, info.normal);
+		//dir = Vector3::reflect(dir, info.normal);
 		//owner.rotateToNewForward(dir);
 
 		oceanHit = true;
@@ -62,7 +62,7 @@ void BallMoveComponent::update(float dt)
 		TargetActor* target = dynamic_cast<TargetActor*>(info.actor);
 		if (target)
 		{
-			target->Hit(dir);
+			//target->Hit(dir);
 
 			static_cast<BallActor*>(&owner)->hitTarget();
 		}
