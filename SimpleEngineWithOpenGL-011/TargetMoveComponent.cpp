@@ -31,7 +31,7 @@ void TargetMoveComponent::update(float dt)
 
 	//cout << "you doing something" << endl;
 	owner.setPosition(start);
-
+	
 
 	// Create line segment
 	LineSegment l(start, end);
@@ -43,11 +43,8 @@ void TargetMoveComponent::update(float dt)
 	{
 		// If we collided, reflect the ball about the normal
 		dir = Vector3::reflect(dir, info.normal);
-		owner.rotateToNewForward(dir);
-
-		//oceanHit = true;
-
-
+		//owner.rotateToNewForward(dir);
+		
 		//setForwardSpeed(1200);
 
 		// Did we hit a target?
@@ -55,7 +52,8 @@ void TargetMoveComponent::update(float dt)
 		if (target)
 		{
 			//target->Hit(dir);
-
+			//cout << "target hit" << endl;
+			
 			//static_cast<BallActor*>(&owner)->hitTarget();
 		}
 	}

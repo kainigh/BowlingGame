@@ -28,7 +28,9 @@ void BallMoveComponent::update(float dt)
 	Vector3 start = owner.getPosition();
 	Vector3 dir = owner.getForward();
 	Vector3 end = start + dir * segmentLength;
+	Vector3 changeTargetPosition = Vector3(0.0f, 0.0f, 0.0f);
 
+	
 
 	if (oceanHit == false)
 	{
@@ -49,20 +51,35 @@ void BallMoveComponent::update(float dt)
 	if (owner.getGame().getPhysicsSystem().segmentCast(l, info) && info.actor != player)
 	{
 		// If we collided, reflect the ball about the normal
-		//dir = Vector3::reflect(dir, info.normal);
-		//owner.rotateToNewForward(dir);
+		dir = Vector3::reflect(dir, info.normal);
+		owner.rotateToNewForward(dir);
 
-		oceanHit = true;
+		//oceanHit = true;
 		
 
 		setForwardSpeed(1200);
 
 		// Did we hit a target?
 		TargetActor* target = dynamic_cast<TargetActor*>(info.actor);
+		//target->offset += 3.0f;
+		
+
 		if (target)
 		{
-			//target->Hit(dir);
+			//target->rotateToNewForward(dir);
+			changeTargetPosition = target->getPosition();
+			cout << "something" << endl;
+			
+			/*if (target->offset < 90.0f)
+			{*/
+				target->offset += 30.0f;
+				changeTargetPosition.y += target->offset;
 
+				//target->setPosition(changeTargetPosition);
+				//target->Hit();
+				target->updateActor(0);
+			//}
+				
 			static_cast<BallActor*>(&owner)->hitTarget();
 		}
 	}

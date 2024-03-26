@@ -6,7 +6,10 @@ class TargetActor : public Actor
 public:
 	TargetActor();
 
-	void Hit(Vector3 dir);
+	void updateActor(float dt) override;
+	void setPlayer(Actor* player);
+	void Hit();
+	float offset = 0.0f;
 
 private:
 	class TargetMoveComponent* targetMove;

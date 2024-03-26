@@ -132,10 +132,12 @@ void Game::load()
 	TargetActor* t = new TargetActor();
 	t->setScale(55.0f);
 	t->setPosition(Vector3(1550.0f, 0.0f, -75.0f));
+	
 
 	t = new TargetActor();
 	t->setScale(55.0f);
 	t->setPosition(Vector3(1650.0f, 50.0f, -75.0f));
+	
 
 	t = new TargetActor();
 	t->setScale(55.0f);

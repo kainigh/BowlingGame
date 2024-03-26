@@ -9,7 +9,7 @@
 
 using namespace std;
 
-TargetActor::TargetActor()
+TargetActor::TargetActor() : Actor(), targetMove(nullptr)
 {
 	setRotation(Quaternion(Vector3::unitZ, Maths::pi));
 	MeshComponent* mc = new MeshComponent(this);
@@ -18,16 +18,38 @@ TargetActor::TargetActor()
 	BoxComponent* bc = new BoxComponent(this);
 	bc->setObjectBox(Assets::getMesh("Mesh_Cube").getBox());
 	targetMove = new TargetMoveComponent(this);
-
+	//targetMove->setForwardSpeed(0.0f);
 	
 }
 
-void TargetActor::Hit(Vector3 dir)
+void TargetActor::updateActor(float dt)
+{
+	Actor::updateActor(dt);
+
+	if (offset >= 0)
+	{
+		targetMove->setForwardSpeed(-offset);
+		//targetMove->setAngularSpeed(offset);
+		cout << "offset = " << offset << endl;
+		offset -= 1.0f;
+	}
+
+	//lifetimeSpan -= dt;
+
+}
+
+void TargetActor::setPlayer(Actor* player)
+{
+	targetMove->setPlayer(player);
+}
+
+void TargetActor::Hit()
 {
 	//setState(ActorState::Dead);
 
 	//setPosition(dir);
-
+	targetMove = new TargetMoveComponent(this);
+	targetMove->setForwardSpeed(0.0f);
 	cout << "Pin hit" << endl;
 
 	//targetMove->
