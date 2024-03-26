@@ -173,6 +173,7 @@ void FPSActor::shoot()
 	Vector3 offset = FPSModel->getPosition();
 
 	offset.z = -90.0f;
+	offset.y = FPSModel->getPosition().y * 10;
 
 	ball->setPosition(offset + dir * 150.0f);
 	// Rotate the ball to face new direction
