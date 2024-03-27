@@ -9,8 +9,6 @@ public:
 
 	void update(float dt) override;
 
-	bool oceanHit = false;
-
 protected:
 	class Actor* player;
 };

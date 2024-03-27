@@ -51,7 +51,7 @@ void TargetMoveComponent::update(float dt)
 		TargetActor* target = dynamic_cast<TargetActor*>(info.actor);
 		if (target)
 		{
-			//target->Hit(dir);
+			
 			//cout << "target hit" << endl;
 			
 			//static_cast<BallActor*>(&owner)->hitTarget();

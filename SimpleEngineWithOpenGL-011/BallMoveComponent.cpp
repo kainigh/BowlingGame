@@ -50,8 +50,8 @@ void BallMoveComponent::update(float dt)
 		
 		if (target)
 		{
-			
-			target->offset += 100.0f;
+			float ballPower = getForwardSpeed();
+			target->offset += ballPower;
 				
 			static_cast<BallActor*>(&owner)->hitTarget();
 

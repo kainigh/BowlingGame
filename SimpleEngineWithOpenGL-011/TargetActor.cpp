@@ -19,8 +19,6 @@ TargetActor::TargetActor() : Actor(), targetMove(nullptr)
 	BoxComponent* bc = new BoxComponent(this);
 	bc->setObjectBox(Assets::getMesh("Mesh_Cube").getBox());
 	targetMove = new TargetMoveComponent(this);
-	//targetMove->setForwardSpeed(0.0f);
-	//tPower = power;
 	
 	
 }
@@ -29,13 +27,18 @@ void TargetActor::updateActor(float dt)
 {
 	Actor::updateActor(dt);
 
-	if (offset >= 0)
+	if (offset > 0)
 	{
 		targetMove->setForwardSpeed(-offset);
 		//targetMove->setAngularSpeed(offset);
-		cout << "offset = " << offset << endl;
+		
 		offset -= 1.0f;
+		
 	}
+	if (offset < 0)
+		offset = 0.0f;
+
+	cout << "offset = " << offset << endl;
 
 	//lifetimeSpan -= dt;
 
