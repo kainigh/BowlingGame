@@ -5,6 +5,7 @@
 #include "Assets.h"
 #include "TargetMoveComponent.h"
 
+
 #include <iostream>
 
 using namespace std;
@@ -19,6 +20,8 @@ TargetActor::TargetActor() : Actor(), targetMove(nullptr)
 	bc->setObjectBox(Assets::getMesh("Mesh_Cube").getBox());
 	targetMove = new TargetMoveComponent(this);
 	//targetMove->setForwardSpeed(0.0f);
+	//tPower = power;
+	
 	
 }
 

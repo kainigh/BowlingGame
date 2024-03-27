@@ -18,6 +18,9 @@ public:
 	void setVisible(bool isVisible);
 	void fixCollisions();
 	void Power(const InputState& inputState);
+	float getPower();
+	float modelScale = 7.75f;
+
 
 private:
 	class MoveComponent* moveComponent;
@@ -35,8 +38,8 @@ private:
 
 	bool power = false;
 	bool launch = false;
-	float modelScale = 7.75f;
-	float scaleSpeed = 0.05f;
+	
+	float powerSpeed = 0.05f;
 
 	Vector3 pos = Vector3(100.0f, 100.0f, -100.0f);
 	

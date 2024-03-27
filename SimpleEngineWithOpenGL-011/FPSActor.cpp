@@ -49,6 +49,11 @@ FPSActor::FPSActor() :
 
 }
 
+float FPSActor::getPower()
+{
+	return modelScale;
+}
+
 void FPSActor::updateActor(float dt)
 {
 	Actor::updateActor(dt);
@@ -70,13 +75,13 @@ void FPSActor::updateActor(float dt)
 
 	if (power)
 	{
-		modelScale -= scaleSpeed;
+		modelScale -= powerSpeed;
 
 		if (modelScale >= 10)
-			scaleSpeed = -scaleSpeed;
+			powerSpeed = -powerSpeed;
 
 		if (modelScale <= 5)
-			scaleSpeed = -scaleSpeed;
+			powerSpeed = -powerSpeed;
 
 		FPSModel->setScale(modelScale);
 	}
@@ -213,7 +218,7 @@ void FPSActor::shoot()
 	Vector3 dir = end - start;
 	dir.normalize();
 	// Spawn a ball
-	BallActor* ball = new BallActor();
+	BallActor* ball = new BallActor(modelScale);
 	ball->setPlayer(this);
 	//ball->setPosition(start + dir * 20.0f);
 	Vector3 offset = FPSModel->getPosition();

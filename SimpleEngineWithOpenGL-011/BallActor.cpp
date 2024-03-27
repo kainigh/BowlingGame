@@ -8,13 +8,14 @@
 
 using namespace std;
 
-BallActor::BallActor() : Actor(), lifetimeSpan(10.0f), audio(nullptr), ballMove(nullptr)
+BallActor::BallActor(float power) : Actor(), lifetimeSpan(10.0f), audio(nullptr), ballMove(nullptr)
 {
 	MeshComponent* mc = new MeshComponent(this);
 	mc->setMesh(Assets::getMesh("Mesh_Sphere"));
 	//audio = new AudioComponent(this);
 	ballMove = new BallMoveComponent(this);
-	ballMove->setForwardSpeed(300.0f);
+	
+	ballMove->setForwardSpeed(10.0f * power * power);
 }
 
 void BallActor::updateActor(float dt)

@@ -3,7 +3,7 @@
 class BallActor : public Actor
 {
 public:
-	BallActor();
+	BallActor(float power);
 
 	void updateActor(float dt) override;
 	void setPlayer(Actor* player);
@@ -13,6 +13,7 @@ public:
 private:
 	class AudioComponent* audio;
 	class BallMoveComponent* ballMove;
+	
 	float lifetimeSpan;
 };
 
