@@ -30,15 +30,17 @@ void TargetActor::updateActor(float dt)
 	if (offset >= 0)
 	{
 		targetMove->setForwardSpeed(-offset);
-		//targetMove->setAngularSpeed(offset);
+		//targetMove->setAngularSpeed(0.1f);
 		
 		offset -= 10.0f;
 		
 	}
 	if (offset < 0)
+	{
 		offset = 0.0f;
+		targetMove->setAngularSpeed(0.0f);
+	}
 
-	//cout << "offset = " << offset << endl;
 
 	//lifetimeSpan -= dt;
 

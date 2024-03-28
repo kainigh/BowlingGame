@@ -14,6 +14,7 @@ using namespace std;
 
 BallMoveComponent::BallMoveComponent(Actor* ownerP) : MoveComponent(ownerP), player(nullptr)
 {
+	
 }
 
 void BallMoveComponent::setPlayer(Actor* playerP)
@@ -50,10 +51,13 @@ void BallMoveComponent::update(float dt)
 		
 		if (target)
 		{
+			
 			cout << "hit" << endl;
-
+			//game->setTotalScore(2.0f);
 			float ballPower = getForwardSpeed();
 			target->offset += ballPower;
+			int score = target->getGame().totalScore + 1;
+			target->getGame().setTotalScore(score);
 				
 			static_cast<BallActor*>(&owner)->hitTarget();
 

@@ -46,13 +46,11 @@ FPSActor::FPSActor() :
 	boxComponent->setObjectBox(collision);
 	boxComponent->setShouldRotate(false);
 
+	
+
 
 }
 
-float FPSActor::getPower()
-{
-	return modelScale;
-}
 
 void FPSActor::updateActor(float dt)
 {
@@ -77,10 +75,10 @@ void FPSActor::updateActor(float dt)
 	{
 		modelScale -= powerSpeed;
 
-		if (modelScale >= 10)
+		if (modelScale >= 12)
 			powerSpeed = -powerSpeed;
 
-		if (modelScale <= 5)
+		if (modelScale <= 6)
 			powerSpeed = -powerSpeed;
 
 		FPSModel->setScale(modelScale);
@@ -89,14 +87,14 @@ void FPSActor::updateActor(float dt)
 	move += moveSpeed;
 
 	//change the direction of the arrow from right to left
-	if (move >= 15 && launch == false)
+	if (move >= 10 && launch == false)
 		moveSpeed = -moveSpeed;		
 
-	if (move <= -15 && launch == false)
+	if (move <= -10 && launch == false)
 		moveSpeed = -moveSpeed;
 	
 
-	move = Maths::clamp(move, -35.0f, 35.0f);
+	//move = Maths::clamp(move, -35.0f, 35.0f);
 
 	
 	modelPosition.y = move;
@@ -190,23 +188,11 @@ void FPSActor::actorInput(const InputState& inputState)
 
 }
 
-void FPSActor::Power(const InputState& inputState)
-{
-	// Increase and decrease size of arrow
 
-	while(inputState.keyboard.getKeyValue(SDL_SCANCODE_P))
-		cout << "Right clicked" << endl;
-
-	/*while(inputState.mouse.getButtonState(3) == ButtonState::Pressed)
-	FPSModel->setScale(5.0f);*/
-
-
-
-
-}
 
 void FPSActor::shoot()
 {
+	
 
 	// Get start point (in center of screen on near plane)
 	Vector3 screenPoint(0.0f, 0.0f, 0.0f);

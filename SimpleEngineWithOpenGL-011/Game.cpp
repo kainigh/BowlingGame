@@ -13,6 +13,10 @@
 #include "TargetActor.h"
 #include <algorithm>
 
+#include <iostream>
+
+using namespace std;
+
 bool Game::initialize()
 {
 	bool isWindowInit = window.initialize();
@@ -36,7 +40,18 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Textures\\floor.jpg", "Plane");
 	Assets::loadTexture(renderer, "Res\\Textures\\Radar.png", "Radar");
 	Assets::loadTexture(renderer, "Res\\Textures\\Sphere.png", "Sphere");
-	Assets::loadTexture(renderer, "Res\\Textures\\Crosshair.png", "Crosshair");
+	Assets::loadTexture(renderer, "Res\\Textures\\scoreboard.png", "Scoreboard");
+	Assets::loadTexture(renderer, "Res\\Textures\\0.png", "0");
+	Assets::loadTexture(renderer, "Res\\Textures\\1.png", "1");
+	Assets::loadTexture(renderer, "Res\\Textures\\2.png", "2");
+	Assets::loadTexture(renderer, "Res\\Textures\\3.png", "3");
+	Assets::loadTexture(renderer, "Res\\Textures\\4.png", "4");
+	Assets::loadTexture(renderer, "Res\\Textures\\5.png", "5");
+	Assets::loadTexture(renderer, "Res\\Textures\\6.png", "6");
+	Assets::loadTexture(renderer, "Res\\Textures\\7.png", "7");
+	Assets::loadTexture(renderer, "Res\\Textures\\8.png", "8");
+	Assets::loadTexture(renderer, "Res\\Textures\\9.png", "9");
+
 	Assets::loadTexture(renderer, "Res\\Textures\\RacingCar.png", "RacingCar");
 	Assets::loadTexture(renderer, "Res\\Textures\\Rifle.png", "Rifle");
 	Assets::loadTexture(renderer, "Res\\Textures\\Target.png", "Target");
@@ -124,20 +139,79 @@ void Game::load()
 	//AudioComponent* ac = new AudioComponent(soundSphere);
 	//ac->playEvent("event:/FireLoop");
 
-	// Corsshair
-	Actor* crosshairActor = new Actor();
-	crosshairActor->setScale(2.0f);
-	crosshair = new SpriteComponent(crosshairActor, Assets::getTexture("Crosshair"));
+
+	for (int i = 0; i < 9; i++)
+	{
+		Actor* scoresArray[] = { new Actor() };
+
+	}
+	
+	
+
+	// Scoreboard
+	Actor* Scoreboard = new Actor();
+	Scoreboard->setScale(1.0f);
+	Scoreboard->setPosition(Vector3(0.0f, 350.0f, 0.0f));
+	scoreboard = new SpriteComponent(Scoreboard, Assets::getTexture("Scoreboard"));
+
+	Actor* number_0 = new Actor();
+	number_0->setScale(0.50f);
+	number_0->setPosition(Vector3(0.0f, 300.0f, 0.0f));
+	score_0 = new SpriteComponent(number_0, Assets::getTexture("0"));
+
+	Actor* number_1 = new Actor();
+	number_1->setScale(0.50f);
+	number_1->setPosition(Vector3(0.0f, 300.0f, 0.0f));
+	score_1 = new SpriteComponent(number_1, Assets::getTexture("1"));
+
+	Actor* number_2 = new Actor();
+	number_2->setScale(0.50f);
+	number_2->setPosition(Vector3(0.0f, 300.0f, 0.0f));
+	score_2 = new SpriteComponent(number_2, Assets::getTexture("2"));
+
+	Actor* number_3 = new Actor();
+	number_3->setScale(0.50f);
+	number_3->setPosition(Vector3(0.0f, 300.0f, 0.0f));
+	score_3 = new SpriteComponent(number_3, Assets::getTexture("3"));
+
+	Actor* number_4 = new Actor();
+	number_4->setScale(0.50f);
+	number_4->setPosition(Vector3(0.0f, 300.0f, 0.0f));
+	score_4 = new SpriteComponent(number_4, Assets::getTexture("4"));
+
+	Actor* number_5 = new Actor();
+	number_5->setScale(0.50f);
+	number_5->setPosition(Vector3(0.0f, 300.0f, 0.0f));
+	score_5 = new SpriteComponent(number_5, Assets::getTexture("5"));
+
+	Actor* number_6 = new Actor();
+	number_6->setScale(0.50f);
+	number_6->setPosition(Vector3(0.0f, 300.0f, 0.0f));
+	score_6 = new SpriteComponent(number_6, Assets::getTexture("6"));
+
+	Actor* number_7 = new Actor();
+	number_7->setScale(0.50f);
+	number_7->setPosition(Vector3(0.0f, 300.0f, 0.0f));
+	score_7 = new SpriteComponent(number_7, Assets::getTexture("7"));
+
+	Actor* number_8 = new Actor();
+	number_8->setScale(0.50f);
+	number_8->setPosition(Vector3(0.0f, 300.0f, 0.0f));
+	score_8 = new SpriteComponent(number_8, Assets::getTexture("8"));
+
+	Actor* number_9 = new Actor();
+	number_9->setScale(0.50f);
+	number_9->setPosition(Vector3(0.0f, 300.0f, 0.0f));
+	score_9 = new SpriteComponent(number_9, Assets::getTexture("9"));
+
 
 	TargetActor* t = new TargetActor();
 	t->setScale(55.0f);
 	t->setPosition(Vector3(1000.0f, 0.0f, -75.0f));
 	
-
 	t = new TargetActor();
 	t->setScale(55.0f);
 	t->setPosition(Vector3(1050.0f, 20.0f, -75.0f));
-	
 	
 	t = new TargetActor();
 	t->setScale(55.0f);
@@ -230,6 +304,8 @@ void Game::processInput()
 
 void Game::update(float dt)
 {
+	
+
 	// Update actors 
 	isUpdatingActors = true;
 	for(auto actor: actors) 
@@ -273,7 +349,7 @@ void Game::changeCamera(int mode)
 	// Disable everything
 	fps->setState(Actor::ActorState::Paused);
 	fps->setVisible(false);
-	crosshair->setVisible(false);
+	scoreboard->setVisible(false);
 	follow->setState(Actor::ActorState::Paused);
 	follow->setVisible(false);
 	orbit->setState(Actor::ActorState::Paused);
@@ -287,7 +363,9 @@ void Game::changeCamera(int mode)
 	default:
 		fps->setState(Actor::ActorState::Active);
 		fps->setVisible(true);
-		crosshair->setVisible(true);
+		scoreboard->setVisible(true);
+		if (totalScore == 0)
+			score_0->setVisible(true);
 		break;
 	case 2:
 		follow->setState(Actor::ActorState::Active);
@@ -302,6 +380,145 @@ void Game::changeCamera(int mode)
 		path->restartSpline();
 		break;
 	}
+}
+
+void Game::setTotalScore(int score)
+{
+
+	if (totalScore != score)
+	{
+		switch (totalScore)
+		{
+
+		case 0:
+			score_0->setVisible(false);
+			break;
+
+		case 1:
+			score_1->setVisible(false);
+			break;
+
+		case 2:
+			score_2->setVisible(false);
+			break;
+
+		case 3:
+			score_3->setVisible(false);
+			break;
+
+		case 4:
+			score_4->setVisible(false);
+			break;
+
+		case 5:
+			score_5->setVisible(false);
+			break;
+
+		case 6:
+			score_6->setVisible(false);
+			break;
+
+		case 7:
+			score_7->setVisible(false);
+			break;
+
+		case 8:
+			score_8->setVisible(false);
+			break;
+
+		case 9:
+			score_9->setVisible(false);
+			break;
+
+		default:
+			score_0->setVisible(false);
+			break;
+
+
+		}
+
+
+		totalScore = score;
+
+		switch (totalScore)
+		{
+
+		case 0:
+			score_0->setVisible(true);
+			break;
+
+		case 1:
+			score_1->setVisible(true);
+			break;
+
+		case 2:
+			score_2->setVisible(true);
+			break;
+
+		case 3:
+			score_3->setVisible(true);
+			break;
+
+		case 4:
+			score_4->setVisible(true);
+			break;
+
+		case 5:
+			score_5->setVisible(true);
+			break;
+
+		case 6:
+			score_6->setVisible(true);
+			break;
+
+		case 7:
+			score_7->setVisible(true);
+			break;
+
+		case 8:
+			score_8->setVisible(true);
+			break;
+
+		case 9:
+			score_9->setVisible(true);
+			break;
+
+		default:
+			score_0->setVisible(true);
+			break;
+
+
+		}
+	}
+
+	
+	/*for (int i = 0; i < 10; i++)
+	{
+		cout << totalScore << "  " << i << endl;
+
+		if (totalScore == i)
+			score_0->setVisible(true);
+		else if (totalScore == i)
+			score_1->setVisible(true);
+		else if (totalScore == i)
+			score_2->setVisible(true);
+		else if (totalScore == i)
+			score_3->setVisible(true);
+		else if (totalScore == i)
+			score_4->setVisible(true);
+		else if (totalScore == i)
+			score_5->setVisible(true);
+		else if (totalScore == i)
+			score_6->setVisible(true);
+		else if (totalScore == i)
+			score_7->setVisible(true);
+		else if (totalScore == i)
+			score_8->setVisible(true);
+		else if (totalScore == i)
+			score_9->setVisible(true);
+
+	}*/
+	
 }
 
 void Game::loop()

@@ -27,7 +27,7 @@ public:
 	Game& operator=(Game&&) = delete;
 
 private:
-	Game() : isRunning(true), isUpdatingActors(false), fps(nullptr), crosshair(nullptr), follow(nullptr), orbit(nullptr), path(nullptr) {}
+	Game() : isRunning(true), isUpdatingActors(false), fps(nullptr), scoreboard(nullptr), follow(nullptr), orbit(nullptr), path(nullptr) {}
 
 public:
 	bool initialize();
@@ -46,7 +46,22 @@ public:
 	void removePlane(class PlaneActor* plane);
 	vector<PlaneActor*>& getPlanes() { return planes; }
 
+	int totalScore = 0;
+	void setTotalScore(int score);
 
+	class SpriteCompent* scoresArray[10];
+	vector<SpriteCompent*> scoresVector;
+
+	class SpriteComponent* score_0;
+	class SpriteComponent* score_1;
+	class SpriteComponent* score_2;
+	class SpriteComponent* score_3;
+	class SpriteComponent* score_4;
+	class SpriteComponent* score_5;
+	class SpriteComponent* score_6;
+	class SpriteComponent* score_7;
+	class SpriteComponent* score_8;
+	class SpriteComponent* score_9;
 
 private:
 	void processInput();
@@ -67,7 +82,8 @@ private:
 	Camera* camera;
 
 	class FPSActor* fps;
-	class SpriteComponent* crosshair;
+	class SpriteComponent* scoreboard;
+	
 	class FollowActor* follow;
 	class OrbitActor* orbit;
 	class SplineActor* path;

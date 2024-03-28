@@ -17,9 +17,8 @@ public:
 	void setFootstepSurface(float value);
 	void setVisible(bool isVisible);
 	void fixCollisions();
-	void Power(const InputState& inputState);
-	float getPower();
-	float modelScale = 7.75f;
+	
+	float modelScale = 8.0f;
 
 
 private:

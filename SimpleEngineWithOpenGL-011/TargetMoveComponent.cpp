@@ -44,7 +44,7 @@ void TargetMoveComponent::update(float dt)
 		// If we collided, reflect the ball about the normal
 		dir = Vector3::reflect(dir, info.normal);
 		owner.rotateToNewForward(dir);
-		cout << "collided" << endl;
+		//cout << "collided" << endl;
 		
 		
 		// Did we hit a target?
