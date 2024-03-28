@@ -24,17 +24,17 @@ void TargetMoveComponent::setPlayer(Actor* playerP)
 void TargetMoveComponent::update(float dt)
 {
 	// Construct segment in direction of travel
-	const float segmentLength = 30.0f;
+	const float segmentLength = 10.0f;
 	Vector3 start = owner.getPosition();
 	Vector3 dir = owner.getForward();
 	Vector3 end = start + dir * segmentLength;
 
-	//cout << "you doing something" << endl;
-	owner.setPosition(start);
 	
-
+	//cout << start.x << "   " << start.y << "   " << start.z << endl;
 	// Create line segment
 	LineSegment l(start, end);
+
+	
 
 	// Test segment vs world
 	PhysicsSystem::CollisionInfo info;
@@ -43,17 +43,17 @@ void TargetMoveComponent::update(float dt)
 	{
 		// If we collided, reflect the ball about the normal
 		dir = Vector3::reflect(dir, info.normal);
-		//owner.rotateToNewForward(dir);
+		owner.rotateToNewForward(dir);
+		cout << "collided" << endl;
 		
-		//setForwardSpeed(1200);
-
+		
 		// Did we hit a target?
 		TargetActor* target = dynamic_cast<TargetActor*>(info.actor);
 		if (target)
 		{
-			
+			//owner.rotateToNewForward(dir);
 			//cout << "target hit" << endl;
-			
+			target->offset += 100.0f;
 			//static_cast<BallActor*>(&owner)->hitTarget();
 		}
 	}

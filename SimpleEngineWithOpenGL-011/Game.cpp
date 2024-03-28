@@ -131,45 +131,45 @@ void Game::load()
 
 	TargetActor* t = new TargetActor();
 	t->setScale(55.0f);
-	t->setPosition(Vector3(1550.0f, 0.0f, -75.0f));
+	t->setPosition(Vector3(1000.0f, 0.0f, -75.0f));
 	
 
 	t = new TargetActor();
 	t->setScale(55.0f);
-	t->setPosition(Vector3(1650.0f, 50.0f, -75.0f));
+	t->setPosition(Vector3(1050.0f, 20.0f, -75.0f));
 	
 	
 	t = new TargetActor();
 	t->setScale(55.0f);
-	t->setPosition(Vector3(1650.0f, -50.0f, -75.0f));
+	t->setPosition(Vector3(1050.0f, -20.0f, -75.0f));
 
 	t = new TargetActor();
 	t->setScale(55.0f);
-	t->setPosition(Vector3(1750.0f, 0.0f, -75.0f));
+	t->setPosition(Vector3(1100.0f, 0.0f, -75.0f));
 
 	t = new TargetActor();
 	t->setScale(55.0f);
-	t->setPosition(Vector3(1750.0f, 75.0f, -75.0f));
+	t->setPosition(Vector3(1100.0f, 40.0f, -75.0f));
 
 	t = new TargetActor();
 	t->setScale(55.0f);
-	t->setPosition(Vector3(1750.0f, -75.0f, -75.0f));
+	t->setPosition(Vector3(1100.0f, -40.0f, -75.0f));
 	
 	t = new TargetActor();
 	t->setScale(55.0f);
-	t->setPosition(Vector3(1850.0f, 50.0f, -75.0f));
+	t->setPosition(Vector3(1150.0f, 20.0f, -75.0f));
 
 	t = new TargetActor();
 	t->setScale(55.0f);
-	t->setPosition(Vector3(1850.0f, -50.0f, -75.0f));
+	t->setPosition(Vector3(1150.0f, -20.0f, -75.0f));
 
 	t = new TargetActor();
 	t->setScale(55.0f);
-	t->setPosition(Vector3(1850.0f, -150.0f, -75.0f));
+	t->setPosition(Vector3(1150.0f, -60.0f, -75.0f));
 
 	t = new TargetActor();
 	t->setScale(55.0f);
-	t->setPosition(Vector3(1850.0f, 150.0f, -75.0f));
+	t->setPosition(Vector3(1150.0f, 60.0f, -75.0f));
 
 
 	changeCamera(1);
@@ -295,7 +295,7 @@ void Game::changeCamera(int mode)
 		break;
 	case 3:
 		orbit->setState(Actor::ActorState::Active);
-		orbit->setVisible(true);
+		orbit->setVisible(false);
 		break;
 	case 4:
 		path->setState(Actor::ActorState::Active);

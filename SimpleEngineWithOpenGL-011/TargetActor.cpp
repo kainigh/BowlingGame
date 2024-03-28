@@ -27,18 +27,18 @@ void TargetActor::updateActor(float dt)
 {
 	Actor::updateActor(dt);
 
-	if (offset > 0)
+	if (offset >= 0)
 	{
 		targetMove->setForwardSpeed(-offset);
 		//targetMove->setAngularSpeed(offset);
 		
-		offset -= 1.0f;
+		offset -= 10.0f;
 		
 	}
 	if (offset < 0)
 		offset = 0.0f;
 
-	cout << "offset = " << offset << endl;
+	//cout << "offset = " << offset << endl;
 
 	//lifetimeSpan -= dt;
 
@@ -51,15 +51,11 @@ void TargetActor::setPlayer(Actor* player)
 
 void TargetActor::Hit()
 {
-	//setState(ActorState::Dead);
 
 	//setPosition(dir);
 	targetMove = new TargetMoveComponent(this);
 	targetMove->setForwardSpeed(0.0f);
 	cout << "Pin hit" << endl;
 
-	//targetMove->
-
-	
 
 }

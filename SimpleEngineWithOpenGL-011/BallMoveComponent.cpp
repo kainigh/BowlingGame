@@ -28,11 +28,11 @@ void BallMoveComponent::update(float dt)
 	Vector3 start = owner.getPosition();
 	Vector3 dir = owner.getForward();
 	Vector3 end = start + dir * segmentLength;
-	Vector3 changeTargetPosition = Vector3(0.0f, 0.0f, 0.0f);
+	
 
 	owner.setPosition(start);
 	
-
+	//cout << player->getPosition().z << endl;
 	// Create line segment
 	LineSegment l(start, end);
 
@@ -50,6 +50,8 @@ void BallMoveComponent::update(float dt)
 		
 		if (target)
 		{
+			cout << "hit" << endl;
+
 			float ballPower = getForwardSpeed();
 			target->offset += ballPower;
 				
