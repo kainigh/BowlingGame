@@ -54,6 +54,9 @@ void TargetMoveComponent::update(float dt)
 			//owner.rotateToNewForward(dir);
 			//cout << "target hit" << endl;
 			target->offset += 100.0f;
+			target->getGame().clearPreviousScore(target->getGame().totalScore);
+			target->getGame().totalScore += 1;
+			target->getGame().setNewScore(target->getGame().totalScore);
 			//static_cast<BallActor*>(&owner)->hitTarget();
 		}
 	}

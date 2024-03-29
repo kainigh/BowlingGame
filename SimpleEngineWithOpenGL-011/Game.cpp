@@ -56,7 +56,7 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Textures\\Rifle.png", "Rifle");
 	Assets::loadTexture(renderer, "Res\\Textures\\Target.png", "Target");
 
-	//Assets::loadTexture(renderer, "Res\\Textures\\BowlingPin.png", "BowlingPin");
+	
 
 
 	Assets::loadMesh("Res\\Meshes\\Cube.gpmesh", "Mesh_Cube");
@@ -66,8 +66,7 @@ void Game::load()
 	Assets::loadMesh("Res\\Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 	Assets::loadMesh("Res\\Meshes\\Target.gpmesh", "Mesh_Target");
 
-	//Assets::loadMesh("Res\\Meshes\\BowlingPin.gpmesh", "Mesh_BowlingPin");
-
+	
 	
 	fps = new FPSActor();
 	follow = new FollowActor();
@@ -138,14 +137,6 @@ void Game::load()
 	//soundSphere->setScale(1.0f);
 	//AudioComponent* ac = new AudioComponent(soundSphere);
 	//ac->playEvent("event:/FireLoop");
-
-
-	for (int i = 0; i < 9; i++)
-	{
-		Actor* scoresArray[] = { new Actor() };
-
-	}
-	
 	
 
 	// Scoreboard
@@ -245,8 +236,33 @@ void Game::load()
 	t->setScale(55.0f);
 	t->setPosition(Vector3(1150.0f, 60.0f, -75.0f));
 
+	cout << "actors size = " << actors.size() << endl;
+	//cout << actors.at(61)->getPosition().x << endl;
 
 	changeCamera(1);
+}
+
+void Game::Rest()
+{
+
+	clearPreviousScore(totalScore);
+	setNewScore(0);
+	numberOfTries = 0;
+	totalScore = 0;
+
+	actors.at(61)->setRotation(Quaternion::identity);
+
+	actors.at(61)->setPosition(Vector3(1000.0f, 0.0f, -75.0f));
+	actors.at(62)->setPosition(Vector3(1050.0f, 20.0f, -75.0f));
+	actors.at(63)->setPosition(Vector3(1050.0f, -20.0f, -75.0f));
+	actors.at(64)->setPosition(Vector3(1100.0f, 0.0f, -75.0f));
+	actors.at(65)->setPosition(Vector3(1100.0f, 40.0f, -75.0f));
+	actors.at(66)->setPosition(Vector3(1100.0f, -40.0f, -75.0f));
+	actors.at(67)->setPosition(Vector3(1150.0f, 20.0f, -75.0f));
+	actors.at(68)->setPosition(Vector3(1150.0f, -20.0f, -75.0f));
+	actors.at(69)->setPosition(Vector3(1150.0f, -60.0f, -75.0f));
+	actors.at(70)->setPosition(Vector3(1150.0f, 60.0f, -75.0f));
+
 }
 
 void Game::processInput()
@@ -304,7 +320,8 @@ void Game::processInput()
 
 void Game::update(float dt)
 {
-	
+	if (numberOfTries >= 2)
+		Rest();
 
 	// Update actors 
 	isUpdatingActors = true;
@@ -382,11 +399,11 @@ void Game::changeCamera(int mode)
 	}
 }
 
-void Game::setTotalScore(int score)
+void Game::clearPreviousScore(int score)
 {
 
-	if (totalScore != score)
-	{
+
+
 		switch (totalScore)
 		{
 
@@ -437,89 +454,66 @@ void Game::setTotalScore(int score)
 
 		}
 
-
-		totalScore = score;
-
-		switch (totalScore)
-		{
-
-		case 0:
-			score_0->setVisible(true);
-			break;
-
-		case 1:
-			score_1->setVisible(true);
-			break;
-
-		case 2:
-			score_2->setVisible(true);
-			break;
-
-		case 3:
-			score_3->setVisible(true);
-			break;
-
-		case 4:
-			score_4->setVisible(true);
-			break;
-
-		case 5:
-			score_5->setVisible(true);
-			break;
-
-		case 6:
-			score_6->setVisible(true);
-			break;
-
-		case 7:
-			score_7->setVisible(true);
-			break;
-
-		case 8:
-			score_8->setVisible(true);
-			break;
-
-		case 9:
-			score_9->setVisible(true);
-			break;
-
-		default:
-			score_0->setVisible(true);
-			break;
-
-
-		}
-	}
-
-	
-	/*for (int i = 0; i < 10; i++)
-	{
-		cout << totalScore << "  " << i << endl;
-
-		if (totalScore == i)
-			score_0->setVisible(true);
-		else if (totalScore == i)
-			score_1->setVisible(true);
-		else if (totalScore == i)
-			score_2->setVisible(true);
-		else if (totalScore == i)
-			score_3->setVisible(true);
-		else if (totalScore == i)
-			score_4->setVisible(true);
-		else if (totalScore == i)
-			score_5->setVisible(true);
-		else if (totalScore == i)
-			score_6->setVisible(true);
-		else if (totalScore == i)
-			score_7->setVisible(true);
-		else if (totalScore == i)
-			score_8->setVisible(true);
-		else if (totalScore == i)
-			score_9->setVisible(true);
-
-	}*/
 	
 }
+
+void Game::setNewScore(int score)
+{
+
+	totalScore = score;
+
+	switch (totalScore)
+	{
+
+	case 0:
+		score_0->setVisible(true);
+		break;
+
+	case 1:
+		score_1->setVisible(true);
+		break;
+
+	case 2:
+		score_2->setVisible(true);
+		break;
+
+	case 3:
+		score_3->setVisible(true);
+		break;
+
+	case 4:
+		score_4->setVisible(true);
+		break;
+
+	case 5:
+		score_5->setVisible(true);
+		break;
+
+	case 6:
+		score_6->setVisible(true);
+		break;
+
+	case 7:
+		score_7->setVisible(true);
+		break;
+
+	case 8:
+		score_8->setVisible(true);
+		break;
+
+	case 9:
+		score_9->setVisible(true);
+		break;
+
+	default:
+		score_0->setVisible(true);
+		totalScore = 0;
+		break;
+
+
+	}
+}
+
 
 void Game::loop()
 {

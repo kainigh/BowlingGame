@@ -2,6 +2,7 @@
 #include "Actor.h"
 //#include "SoundEvent.h"
 #include "Vector3.h"
+
 #include <algorithm>
 
 
@@ -19,6 +20,8 @@ public:
 	void fixCollisions();
 	
 	float modelScale = 8.0f;
+	bool wait;
+
 
 
 private:

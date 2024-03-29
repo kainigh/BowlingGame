@@ -44,7 +44,7 @@ void BallMoveComponent::update(float dt)
 	{
 		// If we collided, reflect the ball about the normal
 		dir = Vector3::reflect(dir, info.normal);
-		owner.rotateToNewForward(dir);
+		//owner.rotateToNewForward(dir);
 		
 		// Did we hit a target?
 		TargetActor* target = dynamic_cast<TargetActor*>(info.actor);
@@ -53,11 +53,12 @@ void BallMoveComponent::update(float dt)
 		{
 			
 			cout << "hit" << endl;
-			//game->setTotalScore(2.0f);
+			
 			float ballPower = getForwardSpeed();
 			target->offset += ballPower;
-			int score = target->getGame().totalScore + 1;
-			target->getGame().setTotalScore(score);
+			target->getGame().clearPreviousScore(target->getGame().totalScore);
+			int newScore = target->getGame().totalScore + 1;
+			target->getGame().setNewScore(newScore);
 				
 			static_cast<BallActor*>(&owner)->hitTarget();
 

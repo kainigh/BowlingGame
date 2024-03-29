@@ -37,8 +37,7 @@ FPSActor::FPSActor() :
 	FPSModel->setScale(modelScale);
 	
 	meshComponent = new MeshComponent(FPSModel);
-	//meshComponent->setMesh(Assets::getMesh("Mesh_Rifle"));
-
+	
 	meshComponent->setMesh(Assets::getMesh("Mesh_Cube"));
 
 	boxComponent = new BoxComponent(this);
@@ -173,17 +172,19 @@ void FPSActor::actorInput(const InputState& inputState)
 
 	if (inputState.mouse.getButtonState(3) == ButtonState::Pressed && power == true)
 	{
-		shoot();
-		launch = false;
-		moveSpeed = 0.1f;
-		power = false;
-		
-		FPSModel->setScale(7.75f);
+		if (getGame().waiting == false)
+		{
+			shoot();
+			launch = false;
+			moveSpeed = 0.1f;
+			power = false;
+
+			FPSModel->setScale(8.0f);
+
+
+		}
 
 	}
-
-
-
 
 
 }
@@ -208,7 +209,7 @@ void FPSActor::shoot()
 	ball->setPlayer(this);
 	//ball->setPosition(start + dir * 20.0f);
 	Vector3 offset = FPSModel->getPosition();
-
+	
 	offset.z = -90.0f;
 	offset.y = FPSModel->getPosition().y * 10;
 
@@ -217,6 +218,9 @@ void FPSActor::shoot()
 	ball->rotateToNewForward(dir);
 	// Play shooting sound
 	//audioComponent->playEvent("event:/Shot");
+
+	
+
 }
 
 

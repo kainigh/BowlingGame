@@ -19,6 +19,7 @@ TargetActor::TargetActor() : Actor(), targetMove(nullptr)
 	BoxComponent* bc = new BoxComponent(this);
 	bc->setObjectBox(Assets::getMesh("Mesh_Cube").getBox());
 	targetMove = new TargetMoveComponent(this);
+	bc->setShouldRotate(false);
 	
 	
 }

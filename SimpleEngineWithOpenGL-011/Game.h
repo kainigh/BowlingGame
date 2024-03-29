@@ -46,11 +46,13 @@ public:
 	void removePlane(class PlaneActor* plane);
 	vector<PlaneActor*>& getPlanes() { return planes; }
 
+	int numberOfTries = 0;
 	int totalScore = 0;
-	void setTotalScore(int score);
-
-	class SpriteCompent* scoresArray[10];
-	vector<SpriteCompent*> scoresVector;
+	
+	void clearPreviousScore(int score);
+	void setNewScore(int score);
+	void Rest();
+	bool waiting = false;
 
 	class SpriteComponent* score_0;
 	class SpriteComponent* score_1;
