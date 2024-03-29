@@ -118,11 +118,11 @@ void FPSActor::actorInput(const InputState& inputState)
 	//forwardSpeed += 100.0f;
 	if (inputState.keyboard.getKeyValue(SDL_SCANCODE_W))
 	{
-		forwardSpeed += 400.0f;
+		//forwardSpeed += 400.0f;
 	}
 	if (inputState.keyboard.getKeyValue(SDL_SCANCODE_S))
 	{
-		forwardSpeed -= 400.0f;
+		//forwardSpeed -= 400.0f;
 	}
 	if (inputState.keyboard.getKeyValue(SDL_SCANCODE_A))
 	{

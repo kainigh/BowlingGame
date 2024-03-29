@@ -42,8 +42,8 @@ void TargetMoveComponent::update(float dt)
 	if (owner.getGame().getPhysicsSystem().segmentCast(l, info) && info.actor != player)
 	{
 		// If we collided, reflect the ball about the normal
-		dir = Vector3::reflect(dir, info.normal);
-		owner.rotateToNewForward(dir);
+		//dir = Vector3::reflect(dir, info.normal);
+		//owner.rotateToNewForward(dir);
 		//cout << "collided" << endl;
 		
 		
@@ -53,10 +53,10 @@ void TargetMoveComponent::update(float dt)
 		{
 			//owner.rotateToNewForward(dir);
 			//cout << "target hit" << endl;
-			target->offset += 100.0f;
-			target->getGame().clearPreviousScore(target->getGame().totalScore);
-			target->getGame().totalScore += 1;
-			target->getGame().setNewScore(target->getGame().totalScore);
+			//target->offset += 10.0f;
+			//target->getGame().clearPreviousScore(target->getGame().totalScore);
+			//target->getGame().totalScore += 1;
+			//target->getGame().setNewScore(target->getGame().totalScore);
 			//static_cast<BallActor*>(&owner)->hitTarget();
 		}
 	}

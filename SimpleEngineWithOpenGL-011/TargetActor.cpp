@@ -4,6 +4,7 @@
 #include "Mesh.h"
 #include "Assets.h"
 #include "TargetMoveComponent.h"
+#include "Game.h"
 
 
 #include <iostream>
@@ -39,9 +40,10 @@ void TargetActor::updateActor(float dt)
 	if (offset < 0)
 	{
 		offset = 0.0f;
+		targetMove->setForwardSpeed(0.0f);
 		targetMove->setAngularSpeed(0.0f);
 	}
-
+	
 
 	//lifetimeSpan -= dt;
 

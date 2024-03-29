@@ -236,9 +236,7 @@ void Game::load()
 	t->setScale(55.0f);
 	t->setPosition(Vector3(1150.0f, 60.0f, -75.0f));
 
-	cout << "actors size = " << actors.size() << endl;
-	//cout << actors.at(61)->getPosition().x << endl;
-
+	
 	changeCamera(1);
 }
 
@@ -250,7 +248,7 @@ void Game::Rest()
 	numberOfTries = 0;
 	totalScore = 0;
 
-	actors.at(61)->setRotation(Quaternion::identity);
+	
 
 	actors.at(61)->setPosition(Vector3(1000.0f, 0.0f, -75.0f));
 	actors.at(62)->setPosition(Vector3(1050.0f, 20.0f, -75.0f));

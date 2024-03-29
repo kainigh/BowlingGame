@@ -16,7 +16,7 @@ BallActor::BallActor(float power) : Actor(), lifetimeSpan(2.0f), audio(nullptr),
 	//audio = new AudioComponent(this);
 	ballMove = new BallMoveComponent(this);
 	
-	ballMove->setForwardSpeed(10.0f * power * power);
+	ballMove->setForwardSpeed(7.0f * power * power);
 }
 
 void BallActor::updateActor(float dt)
@@ -26,17 +26,17 @@ void BallActor::updateActor(float dt)
 	lifetimeSpan -= dt;
 	//if (lifetimeSpan < 0.0f)
 	//{
-	if (ballMove->getOwner().getPosition().x >= 1200)
+	if (ballMove->getOwner().getPosition().x >= 2000)
 	{
 		setState(ActorState::Dead);
-		getGame().numberOfTries++;
+		getGame().numberOfTries += 1;
 		getGame().waiting = false;
 	}
-	else if(ballMove->getOwner().getPosition().x < 1200)
+	else if(ballMove->getOwner().getPosition().x < 2000)
 		getGame().waiting = true;
 	//}
 
-	cout << ballMove->getOwner().getPosition().x << endl;
+	
 }
 
 void BallActor::setPlayer(Actor* player)

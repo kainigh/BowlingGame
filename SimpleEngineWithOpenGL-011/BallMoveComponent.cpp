@@ -52,10 +52,11 @@ void BallMoveComponent::update(float dt)
 		if (target)
 		{
 			
-			cout << "hit" << endl;
 			
 			float ballPower = getForwardSpeed();
 			target->offset += ballPower;
+
+			
 			target->getGame().clearPreviousScore(target->getGame().totalScore);
 			int newScore = target->getGame().totalScore + 1;
 			target->getGame().setNewScore(newScore);
